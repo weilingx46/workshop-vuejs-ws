@@ -36,7 +36,8 @@ $ npm install vue
 
 Remember to explain any notation you are using.
 
-To get started, add the following HTML to index.html, inside the body tags.
+To get started, add the following HTML to index.html, inside the body tags. This
+provides a place for your Vue component to be mounted and provides some controls. 
 ```html
 <div id="main-app">
     <!-- bag image -->
