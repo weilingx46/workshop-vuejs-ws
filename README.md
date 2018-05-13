@@ -2,9 +2,9 @@
 
 ![](http://i.giphy.com/eUh8NINbZf9Ys.gif)
 
-Vue.js is, quite simply, a framework for building user interfaces. Does that sound familiar? 
-It should, because that's the same thing that React does! In fact, you'll see Vue.js commonly 
-listed as an alternative to React or Angular. It's lightweight, much faster, and 
+Vue.js is, quite simply, a framework for building user interfaces. Does that sound familiar?
+It should, because that's the same thing that React does! In fact, you'll see Vue.js commonly
+listed as an alternative to React or Angular. It's lightweight, much faster, and
 has the components of React and the two-way data binding of tutorial.
 
 ## Overview
@@ -14,6 +14,12 @@ Summary of what we're about to do.
 ## Setup
 
 Any necessary setup steps
+
+Let's install vue:
+
+~~~~
+$ npm install vue
+~~~~
 
 ## Step by Step
 
