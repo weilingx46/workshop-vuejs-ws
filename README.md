@@ -66,6 +66,15 @@ Your index.html should look like this:
 
 
 
+
+:sunglasses: GitHub markdown files [support emoji notation](http://www.emoji-cheat-sheet.com/)
+
+Here's a resource for [github markdown](https://guides.github.com/features/mastering-markdown/).
+
+
+
+
+
 Now head over to your app.js file. You'll notice that you the line ``el='#main-app'`` .
 ``el`` is an element selector, and it specifies the div that our app is going to act on (the same way we used ``getElementById`` in previous labs).
 
@@ -75,11 +84,6 @@ Under the ``data`` properties, paste the following code:
   ended: false,``
 
 These variables act like states, and they can be manipulated by the functions we provide in the methods section.
-:sunglasses: GitHub markdown files [support emoji notation](http://www.emoji-cheat-sheet.com/)
-
-Here's a resource for [github markdown](https://guides.github.com/features/mastering-markdown/).
-
-
 ## Summary / What you Learned
 
 * [ ] can be checkboxes
