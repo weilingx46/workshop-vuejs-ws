@@ -73,7 +73,7 @@ ended: false,
 
 These variables act like states, and they can be manipulated by the functions we provide in the methods section.
 
-Now let's add a few methods. Paste the following code to your
+Now let's add a few methods. Paste the following code inside methods:
 
 ~~~~
 punch() {
