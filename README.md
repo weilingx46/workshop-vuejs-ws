@@ -27,7 +27,7 @@ Let's install vue:
 ~~~~
 $ npm install vue
 ~~~~
-
+ 
 ## Step by Step
 
 * Explanations of the what **and** the why behind each step. Try to include:
