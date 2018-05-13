@@ -40,6 +40,25 @@ Remember to explain any notation you are using.
 /* and use code blocks for any code! */
 ```
 
+To get started, add the following HTML to index.html, inside the body tags. 
+```html
+<div id="main-app">
+    <!-- bag image -->
+    <div id="bag" v-bind:class="{ burst: ended }"></div>
+
+    <!-- bag health bar -->
+    <div id="bag-health">
+        <div v-bind:style="{ width: health + '%' }"></div>
+    </div>
+
+    <!-- game control buttons -->
+    <div id="controls">
+        <button v-on:click="punch" v-show="!ended">Punch</button>
+        <button v-on:click="restart">Restart</button>
+    </div>
+</div>
+```
+
 ![screen shots are helpful](img/screenshot.png)
 
 :sunglasses: GitHub markdown files [support emoji notation](http://www.emoji-cheat-sheet.com/)
