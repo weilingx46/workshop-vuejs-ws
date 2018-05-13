@@ -58,9 +58,11 @@ Your index.html should look like this:
 ![](img/indexHtmlScreenshot.png)
 <!-- ![screen shots are helpful](img/screenshot.png) -->
 
-:sunglasses: GitHub markdown files [support emoji notation](http://www.emoji-cheat-sheet.com/)
+So far this is all pretty familiar, right? :sleeping:
+Don't worry, we're getting to the good stuff soon.
+<!-- :sunglasses: GitHub markdown files [support emoji notation](http://www.emoji-cheat-sheet.com/) -->
 
-Here's a resource for [github markdown](https://guides.github.com/features/mastering-markdown/).
+<!-- Here's a resource for [github markdown](https://guides.github.com/features/mastering-markdown/). -->
 
 
 ## Summary / What you Learned
