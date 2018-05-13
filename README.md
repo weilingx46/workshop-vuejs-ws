@@ -60,19 +60,12 @@ To get started, add the following HTML to index.html, inside the body tags.
 =======
 Your index.html should look like this:
 ![](img/indexHtmlScreenshot.png)
-<!-- ![screen shots are helpful](img/screenshot.png) -->
->>>>>>> 7f2d7e7bb6e0e6e24fa37d27d8298595bde43138
-
-
 
 
 
 :sunglasses: GitHub markdown files [support emoji notation](http://www.emoji-cheat-sheet.com/)
 
 Here's a resource for [github markdown](https://guides.github.com/features/mastering-markdown/).
-
-
-
 
 
 Now head over to your app.js file. You'll notice that you the line ``el='#main-app'`` .
