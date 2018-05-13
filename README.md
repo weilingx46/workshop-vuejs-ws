@@ -20,6 +20,12 @@ of Vue.js. We'll create a virtual punching bag!
 Because this is a demo of Vue itself, there is no need to set up anything else
 beyond these project files on your computer.
 
+Let's install vue:
+
+~~~~
+$ npm install vue
+~~~~
+
 ## Step by Step
 
 * Explanations of the what **and** the why behind each step. Try to include:
