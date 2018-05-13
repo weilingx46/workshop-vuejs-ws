@@ -27,7 +27,7 @@ Let's install vue:
 ~~~~
 $ npm install vue
 ~~~~
- 
+
 ## Step by Step
 
 * Explanations of the what **and** the why behind each step. Try to include:
@@ -54,6 +54,16 @@ To get started, add the following HTML to index.html, inside the body tags.
     </div>
 </div>
 ```
+
+Now head over to your app.js file. You'll notice that you the line ``el='#main-app'`` .
+``el`` is an element selector, and it specifies the div that our app is going to act on (the same way we used ``getElementById`` in previous labs).
+
+Under the ``data`` properties, paste the following code:
+
+``health: 100,
+  ended: false,``
+
+These variables act like states, and they can be manipulated by the functions we provide in the methods section.
 
 ![screen shots are helpful](img/screenshot.png)
 
