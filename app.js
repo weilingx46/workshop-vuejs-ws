@@ -1,5 +1,7 @@
 new Vue({
-  el: '#vue-app',
+  // note how Vue connects components--by their ID in the layout file
+  // this is a little diferent from how they're imported and used in React
+  el: '#main-app',
   data: {
     health: 100,
     ended: false,
