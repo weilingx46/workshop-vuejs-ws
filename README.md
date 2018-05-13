@@ -1,8 +1,7 @@
 # CS52 Workshop, 5/15/18:  Vue.js
 
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Vue.svg/1200px-Vue.svg.png" alt="drawing" style="height: 200px;"/>
-
+![](img/Medium-Vue.png)
 
 Vue.js is, quite simply, a framework for building user interfaces. Does that sound familiar?
 It should, because that's the same thing that React does! In fact, you'll see Vue.js commonly
