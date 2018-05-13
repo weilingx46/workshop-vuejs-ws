@@ -55,9 +55,6 @@ To get started, add the following HTML to index.html, inside the body tags.
 </div>
 ```
 
-
-![screen shots are helpful](img/screenshot.png)
-=======
 Your index.html should look like this:
 ![](img/indexHtmlScreenshot.png)
 
