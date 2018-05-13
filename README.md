@@ -1,7 +1,7 @@
 # CS52 Workshop, 5/15/18:  Vue.js
 
 
-<img src="https://cdn-images-1.medium.com/max/1600/1*MoHYZRrpQcOociJZTo83zg.png" alt="drawing" style="height: 200px;"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Vue.svg/1200px-Vue.svg.png" alt="drawing" style="height: 200px;"/>
 
 
 Vue.js is, quite simply, a framework for building user interfaces. Does that sound familiar?
@@ -56,17 +56,29 @@ This provides a place for your Vue component to be mounted and provides some con
     </div>
 </div>
 ```
+
+
+![screen shots are helpful](img/screenshot.png)
+=======
 Your index.html should look like this:
 ![](img/indexHtmlScreenshot.png)
-<!-- ![screen shots are helpful](img/screenshot.png) -->
-
-So far this is all pretty familiar, right? :sleeping:
-Don't worry, we're getting to the good stuff soon.
-<!-- :sunglasses: GitHub markdown files [support emoji notation](http://www.emoji-cheat-sheet.com/) -->
-
-<!-- Here's a resource for [github markdown](https://guides.github.com/features/mastering-markdown/). -->
 
 
+
+:sunglasses: GitHub markdown files [support emoji notation](http://www.emoji-cheat-sheet.com/)
+
+Here's a resource for [github markdown](https://guides.github.com/features/mastering-markdown/).
+
+
+Now head over to your app.js file. You'll notice that you the line ``el='#main-app'`` .
+``el`` is an element selector, and it specifies the div that our app is going to act on (the same way we used ``getElementById`` in previous labs).
+
+Under the ``data`` properties, paste the following code:
+
+``health: 100,
+  ended: false,``
+
+These variables act like states, and they can be manipulated by the functions we provide in the methods section.
 ## Summary / What you Learned
 
 * [ ] can be checkboxes
