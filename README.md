@@ -1,8 +1,11 @@
-# CS52 Workshops:  TITLE OF YOUR WORKSHOP
+# CS52 Workshop, 5/15/18:  Vue.js
 
 ![](http://i.giphy.com/eUh8NINbZf9Ys.gif)
 
-Brief motivation here as well as in presentation
+Vue.js is, quite simply, a framework for building user interfaces. Does that sound familiar? 
+It should, because that's the same thing that React does! In fact, you'll see Vue.js commonly 
+listed as an alternative to React or Angular. It's lightweight, much faster, and 
+has the components of React and the two-way data binding of tutorial.
 
 ## Overview
 
