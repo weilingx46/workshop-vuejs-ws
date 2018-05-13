@@ -60,10 +60,10 @@ Your index.html should look like this:
 ![](img/indexHtmlScreenshot.png)
 
 
-Now head over to your app.js file. You'll notice that you the line ``el='#main-app'`` .
+Now head over to your app.js file. You'll notice that you the line ``el='#main-app'``.
 ``el`` is an element selector, and it specifies the div that our app is going to act on (the same way we used ``getElementById`` in previous labs).
 
-Under the ``data`` properties, paste the following code:
+In your app.js, inside the ``data`` section , paste the following code:
 
 ~~~~
 health: 100,
@@ -71,8 +71,9 @@ ended: false,
 ~~~~
 
 These variables act like states, and they can be manipulated by the functions we provide in the methods section.
+In this case, they keep track of the health of our bag and boolean indicating if the game has ended.
 
-Now let's add a few methods. Paste the following code inside methods:
+Now let's add a few methods to make our game more interesting. Paste the following code inside methods:
 
 ~~~~
 punch() {
@@ -87,6 +88,7 @@ punch() {
     },
 ~~~~
 
+These functions will be called from button clicks as specified in the ``index.html`` file. 
 
 ## Summary / What you Learned
 
