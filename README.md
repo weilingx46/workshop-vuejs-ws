@@ -36,11 +36,7 @@ $ npm install vue
 
 Remember to explain any notation you are using.
 
-```javascript
-/* and use code blocks for any code! */
-```
-
-To get started, add the following HTML to index.html, inside the body tags. 
+To get started, add the following HTML to index.html, inside the body tags.
 ```html
 <div id="main-app">
     <!-- bag image -->
