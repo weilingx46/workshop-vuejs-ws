@@ -51,4 +51,5 @@ Here's a resource for [github markdown](https://guides.github.com/features/maste
 
 ## Resources
 
-* cite any resources
+This workshop was based on a tutorial at https://www.youtube.com/watch?v=WjfpQlVem-8.
+The repo with their provided code is located at https://github.com/iamshaunjp/vuejs-playlist/tree/65348d6c9202c7f573ca62305ca8c8cf19f15d58.
