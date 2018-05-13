@@ -1,7 +1,7 @@
 # CS52 Workshop, 5/15/18:  Vue.js
 
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Vue.svg/1200px-Vue.svg.png" alt="drawing" style="width: 200px;"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Vue.svg/1200px-Vue.svg.png" alt="drawing" style="height: 200px;"/>
 
 
 Vue.js is, quite simply, a framework for building user interfaces. Does that sound familiar?
