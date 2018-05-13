@@ -72,10 +72,29 @@ Now head over to your app.js file. You'll notice that you the line ``el='#main-a
 
 Under the ``data`` properties, paste the following code:
 
-``health: 100,
-  ended: false,``
+~~~~
+health: 100,
+ended: false,
+~~~~
 
 These variables act like states, and they can be manipulated by the functions we provide in the methods section.
+
+Now let's add a few methods. Paste the following code to your
+
+~~~~
+punch() {
+      this.health -= 10;
+      if (this.health <= 0) {
+        this.ended = true;
+      }
+    },
+    restart() {
+      this.health = 100;
+      this.ended = false;
+    },
+~~~~
+
+
 ## Summary / What you Learned
 
 * [ ] can be checkboxes
