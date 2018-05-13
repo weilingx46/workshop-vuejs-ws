@@ -60,21 +60,34 @@ Your index.html should look like this:
 ![](img/indexHtmlScreenshot.png)
 
 
-
-:sunglasses: GitHub markdown files [support emoji notation](http://www.emoji-cheat-sheet.com/)
-
-Here's a resource for [github markdown](https://guides.github.com/features/mastering-markdown/).
-
-
 Now head over to your app.js file. You'll notice that you the line ``el='#main-app'`` .
 ``el`` is an element selector, and it specifies the div that our app is going to act on (the same way we used ``getElementById`` in previous labs).
 
 Under the ``data`` properties, paste the following code:
 
-``health: 100,
-  ended: false,``
+~~~~
+health: 100,
+ended: false,
+~~~~
 
 These variables act like states, and they can be manipulated by the functions we provide in the methods section.
+
+Now let's add a few methods. Paste the following code to your
+
+~~~~
+punch() {
+      this.health -= 10;
+      if (this.health <= 0) {
+        this.ended = true;
+      }
+    },
+    restart() {
+      this.health = 100;
+      this.ended = false;
+    },
+~~~~
+
+
 ## Summary / What you Learned
 
 * [ ] can be checkboxes
