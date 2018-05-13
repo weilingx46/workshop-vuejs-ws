@@ -1,19 +1,24 @@
 # CS52 Workshop, 5/15/18:  Vue.js
 
-![](http://i.giphy.com/eUh8NINbZf9Ys.gif)
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Vue.svg/1200px-Vue.svg.png)
 
 Vue.js is, quite simply, a framework for building user interfaces. Does that sound familiar?
 It should, because that's the same thing that React does! In fact, you'll see Vue.js commonly
-listed as an alternative to React or Angular. It's lightweight, much faster, and
-has the components of React and the two-way data binding of tutorial.
+listed as an alternative to React or Angular. It's lightweight, fast, and
+features components like React. Unlike React, Vue.js allows two way data binding
+between your Javascript and the DOM.
 
 ## Overview
 
-Summary of what we're about to do.
+In this tutorial, we'll build a single page app that demonstrates the basic functionality
+of Vue.js. We'll create a virtual punching bag!
+
+![](https://i.imgur.com/3eDkeRZ.gif)
 
 ## Setup
 
-Any necessary setup steps
+Because this is a demo of Vue itself, there is no need to set up anything else
+beyond these project files on your computer.
 
 Let's install vue:
 
