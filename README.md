@@ -54,6 +54,7 @@ To get started, add the following HTML to index.html, inside the body tags.
     </div>
 </div>
 ```
+<<<<<<< HEAD
 
 Now head over to your app.js file. You'll notice that you the line ``el='#main-app'`` .
 ``el`` is an element selector, and it specifies the div that our app is going to act on (the same way we used ``getElementById`` in previous labs).
@@ -66,6 +67,11 @@ Under the ``data`` properties, paste the following code:
 These variables act like states, and they can be manipulated by the functions we provide in the methods section.
 
 ![screen shots are helpful](img/screenshot.png)
+=======
+Your index.html should look like this:
+![](img/indexHtmlScreenshot.png)
+<!-- ![screen shots are helpful](img/screenshot.png) -->
+>>>>>>> 7f2d7e7bb6e0e6e24fa37d27d8298595bde43138
 
 :sunglasses: GitHub markdown files [support emoji notation](http://www.emoji-cheat-sheet.com/)
 
