@@ -8,7 +8,19 @@
         <script src="https://unpkg.com/vue"></script>
     </head>
     <body>
+      <div id="main-app">
+          <!-- bag image -->
+          <div id="bag"></div>
 
+          <!-- bag health bar -->
+          <div id="bag-health"></div>
+
+          <!-- game control buttons -->
+          <div id="controls">
+              <button v-on:click="punch">Punch</button>
+              <button v-on:click="restart">Restart</button>
+          </div>
+      </div>
     </body>
 
     <script src="app.js"></script>

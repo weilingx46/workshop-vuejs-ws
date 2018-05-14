@@ -10,6 +10,7 @@ new Vue({
   },
   methods: {
     punch() {
+      console.log("punch");
       this.health -= 10;
       if (this.health <= 0) {
         this.ended = true;

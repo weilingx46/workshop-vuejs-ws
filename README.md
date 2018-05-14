@@ -36,22 +36,20 @@ $ npm install vue
 Remember to explain any notation you are using.
 
 To get started, add the following HTML inside the body tags of `index.html`.
-This provides a place for your Vue component to be mounted and provides some controls.
+This provides a place for your Vue component to be mounted and provides some controls, to which we will bind functionality.
 
 ```html
 <div id="main-app">
     <!-- bag image -->
-    <div id="bag" v-bind:class="{ burst: ended }"></div>
+    <div id="bag"></div>
 
     <!-- bag health bar -->
-    <div id="bag-health">
-        <div v-bind:style="{ width: health + '%' }"></div>
-    </div>
+    <div id="bag-health"></div>
 
     <!-- game control buttons -->
     <div id="controls">
-        <button v-on:click="punch" v-show="!ended">Punch</button>
-        <button v-on:click="restart">Restart</button>
+        <button>Punch</button>
+        <button>Restart</button>
     </div>
 </div>
 ```
@@ -60,7 +58,7 @@ Your index.html should look like this:
 ![](img/indexHtmlScreenshot.png)
 
 
-Now head over to your app.js file. You'll notice that you the line ``el='#main-app'``.
+Now head over to your app.js file. You'll notice the line ``el='#main-app'``.
 ``el`` is an element selector, and it specifies the div that our app is going to act on (the same way we used ``getElementById`` in previous labs).
 
 In your app.js, inside the ``data`` section , paste the following code:
@@ -88,7 +86,10 @@ punch() {
     },
 ~~~~
 
-These functions will be called from button clicks as specified in the ``index.html`` file. 
+We can set on click methods on our controls to call these functions.
+Add `v-on:click="punch"` to the Punch button in game controls in your ``index.html`` file. Connect the restart function similarly.
+
+
 
 ## Summary / What you Learned
 
