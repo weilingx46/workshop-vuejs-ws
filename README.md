@@ -51,7 +51,7 @@ const punchingBag = Vue.component('punching-bag', {
       message: 'Hello CS 52!',
     }
   }
-})
+});
 
 new Vue({
   // This is our root instance. 
@@ -170,7 +170,7 @@ Your punching bag component should now look like the following:
 
 ```javascript
 const punchingBag = Vue.component('punching-bag', {
-  data: () => { 
+  data: function () { 
     return {
       health: 100,
       ended: false,
