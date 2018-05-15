@@ -15,73 +15,110 @@ of Vue.js. We'll create a virtual punching bag that has its own health bar and s
 open when it's done! Then we'll add a router so that you have a page with a Tim 
 punching bag as well!
 
+* [ ] Set up a Vue component
+
+* [ ] Learn how to add event handlers and class/style bindings 
+
+* [ ] Set up a Vue router
+
+* [ ] Learn how to pass props to components
+
 ![](https://i.imgur.com/3eDkeRZ.gif)
 
 ## Setup
 
 If we were building a large-scale app, we would install Vue.js via `npm`. 
-But for our purposes, we can just include the link in our HTML! Add the below line at 
+But for our purposes, we can just include the CDN link in our HTML! Add the below lines at 
 the bottom of your body tags in `index.html`:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 ```
+
+And that's all the setup we should need!
 
 ## Step by Step
 
-To get started, add the following HTML inside the body tags of `index.html`.
-This is where our Vue component will mount within our application.
-
-```html
-<div id="main-app">
-  {{ message }}
-</div>
-```
-
-Now head over to `app.js` and add the following code:
+To get started, add the following code in `app.js`:
 
 ```javascript
-new Vue({
-  // Note how Vue connects components--by their ID in the layout file
-  // This is a little diferent from how they're imported and used in React
-  el: '#main-app',
-  data: {
-    message: 'Hello CS 52!'
+const punchingBag = Vue.component('punching-bag', {
+  data: () => {
+    return {
+      message: 'Hello CS 52!',
+    }
   }
+})
+
+new Vue({
+  // This is our root instance. 
+  el: '#main-app',
 });
 ```
 
-Now run the following command and open up <http://localhost:8000> in your browser:
-
-```python
-python -m SimpleHTTPServer
-```
-
-Voila! We have our first Vue.js component. The `data` property has all of the stuff available to 
-our component to render within our app. Notice how it has a `message`? We included that 
-by adding 
+A lot going on here, but let's dive in. The root instance of the Vue application 
+is the code at the bottom (`new Vue(...)`). It mounts to the div where 
 
 ```html
-{{ message }}
+<div id="main-app">
+  ....
+</div>
 ```
 
-inside our HTML (this is called mustache syntax). So now that we know how to add data, 
-let's add what we need for our punching bag. We need a property to tell us the 
-punching bag's "health" and when it's ready to burst.
+as indicated by its `el` property. Above that, we're creating a `punching-bag` 
+component, which has its own specific data fields such as `message`. Already, 
+you can see some similarities with React!
 
-Replace `data` in `app.js`:
+In actuality, a punching bag doesn't need a `message` field. So let's replace `data `
+with the following:
 
 ```javascript
-data: {
-  health: 100,
-  ended: false
-}
+data: () => { 
+  return {
+    health: 100,
+    ended: false,
+}},
 ```
 
-Now we need something to change the health of the punching bag. Something like a function! 
-Let's add that to our component as another property:
+So now our punching bag has a `health` and a boolean to tell us if we've exhausted 
+that health.
+
+Ok but our punching bag also needs to have a layout right? Something like a template? 
+Well let's add one! Update your punching bag component to look like the below: 
 
 ```javascript
+const punchingBag = Vue.component('punching-bag', {
+  data: () => { 
+    return {
+      health: 100,
+      ended: false,
+  }},
+  template: `
+    <div class="punching-bag">
+      <div id="controls">
+          <button v-on:click="punch" v-show="!ended">Punch</button>
+          <button v-on:click="reset">Reset</button>
+      </div>
+    </div>
+  `,
+});
+```
+
+We now have a `template` property for our component that has the HTML layout it 
+will need. Notice how there's a `v-on:click` on the buttons? That indicates to Vue 
+that when a click event is emitted from the buttons execute the `punch()` and `restart()` 
+methods within your component. `v-show` tells Vue to only show the Punch button 
+if ended is false.
+
+But we don't have methods yet. Let's add a `methods` property right below `data`:
+
+```javascript
+data: () => { 
+  return {
+    health: 100,
+    ended: false,
+}},
 methods: {
   punch() {
     this.health -= 10;
@@ -89,30 +126,53 @@ methods: {
       this.ended = true;
     }
   },
-}
-```
-
-`this.health` and `this.ended` refer to the data in our component instance; remember 
-that we defined these fields in the `data` property! Cool, so we've got a punching function. 
-Let's add something to reset our punching bag back to full health. Add the below function 
-within your `methods` section:
-
-```javascript
-restart() {
-  this.health = 100;
-  this.ended = false;
-},
-```
-
-Your `app.js` should at this point look like the following:
-
-```javascript
-new Vue({
-  el: '#main-app',
-  data: {
-    health: 100,
-    ended: false,
+  reset() {
+    this.health = 100;
+    this.ended = false;
   },
+},
+// .....your template code, etc
+```
+
+So we're updating our punching bag to reduce its health by 10 everytime it's 
+punched, and when its health is below zero, set `ended` to true. Recall that in 
+our template HTML, we don't show the Punch button if `ended` is true, so we are 
+directly affecting our DOM.
+
+Now let's update our template. Add the following HTML to the template so it looks like 
+the below:
+
+```javascript
+template: `
+  <div class="punching-bag">
+    <div id="bag" v-bind:class="{ burst: ended }"></div>
+
+    <div id="bag-health">
+        <div v-bind:style="{ width: health + '%' }"></div>
+    </div>
+
+    <div id="controls">
+        <button v-on:click="punch" v-show="!ended">Punch</button>
+        <button v-on:click="restart">Restart</button>
+    </div>
+  </div>
+`,
+```
+
+`v-bind` modifies the attributes of the div. In `#bag-health`, it updates its 
+child div's width everytime our component's `health` changes. This is our 
+progress bar! And in `#bag` it adds a class attribute `burst` to the div when 
+ended is true. We use this in our CSS file to change the image (check it out!).
+
+Your punching bag component should now look like the following:
+
+```javascript
+const punchingBag = Vue.component('punching-bag', {
+  data: () => { 
+    return {
+      health: 100,
+      ended: false,
+  }},
   methods: {
     punch() {
       this.health -= 10;
@@ -125,53 +185,8 @@ new Vue({
       this.ended = false;
     },
   },
-});
-```
-
-Now let's make everything actually appear in our HTML. Vue uses templates (similar to react), 
-where we can add controls to the template that connect to our code. Let's first 
-add buttons to modify the punching bag's appearance.
-
-Add the below code just inside your `<div id="main-app">` container (make sure to 
-get rid of any other stuff that's still inside it, like the message stuff).
-
-```html
-<div id="controls">
-    <button v-on:click="punch" v-show="!ended">Punch</button>
-    <button v-on:click="restart">Restart</button>
-</div>
-```
-
-`v-on:click` is exactly what it looks like: when a click event is emitted on the 
-punch button, our `punch()` function will get called. `v-show` tells Vue to not show 
-the Punch button when `ended` is true. Remember that we update `ended` inside 
-`punch()` when our health is less than or equal to zero!
-
-Let's now add a div that acts like a status bar to display the punching bag's health. 
-Add this ABOVE the `<div id="controls">` part:
-
-```html
-<div id="bag-health">
-    <div v-bind:style="{ width: health + '%' }"></div>
-</div>
-```
-
-See how we're updating the div's width when our `health` data field changes? Pretty sweet! 
-Now let's add the actual bag punching bag. Add this ABOVE the `<div id="bag-health">` part:
-
-```html
-<div id="bag" v-bind:class="{ burst: ended }"></div>
-```
-
-This code adds in a CSS class `burst` when our `ended` data field is true. If you look 
-in our CSS file (we've already done that for you!), then you'll see that the background 
-image changes when the `burst` class is present on the div.
-
-Your HTML body should now look like the following:
-
-```html
-<body>
-    <div id="main-app">
+  template: `
+    <div class="punching-bag">
       <div id="bag" v-bind:class="{ burst: ended }"></div>
 
       <div id="bag-health">
@@ -183,19 +198,127 @@ Your HTML body should now look like the following:
           <button v-on:click="restart">Restart</button>
       </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="app.js"></script>
-</body>
+  `,
+});
 ```
 
-Cool! Now let's add some ROUTING
+Now we just need to add our punching bag component to our root instance. Go to `index.html` 
+and inside the `<div id=main-app>`, add this:
+
+```html
+<punching-bag></punching-bag>
+```
+
+That's it! Now run the following command and open up <http://localhost:8000> in your browser:
+
+```python
+python -m SimpleHTTPServer
+```
+
+And voila! We have our first Vue.js application! You should now see the punching bag and 
+be able to click the Punch and Reset buttons to modify the progress bar.
+
+But this is still very basic. So let's now add some routing!
+
+We're still going to have our home page that has our punching bag but also add a `/tim` route 
+that gives us a new punching bag with Tim's face!
+
+Let's start with adding this code right below our punching bag component code:
+
+```javascript
+const routes = [
+  { path: '/', component: punchingBag, props: { tim: false } },
+  { path: '/tim', component: punchingBag, props: { tim: true } },
+];
+
+const router = new VueRouter({
+  routes, // short for `routes: routes`
+  mode: 'history', // removes the hash from
+});
+```
+
+Wait what? Yes, Vue has props too! We've laid out our routes, but notice how we're 
+reusing our punching bag component; the only thing we're changing is the `tim` 
+prop that we're passing in.
+
+Ok so now we need to update our punching bag to take advantage of this. In our `template`, 
+update the `#bag` div to look like the following:
+
+```
+<div id="bag" v-bind:class="[{ burst: ended }, timClasses]"></div>
+```
+
+This tells Vue to add the `burst` class AND a `timClasses` object (that we will 
+shortly define). Now, at the top of your punching bag component, add the following 
+property:
+
+```javascript
+props: ['tim],
+// ... your data, methods, template, etc
+```
+
+We now have access to the `tim` prop in our component. Now, between `methods` and `template`, 
+add this code:
+
+```javascript
+computed: {
+  timClasses: function () {
+    return {
+      'tim-100': this.tim && this.health <= 100 && this.health > 70,
+      'tim-70': this.tim && this.health <= 70 && this.health > 30,
+      'tim-30': this.tim && this.health <= 30 && this.health > 0,
+      'tim-burst': this.tim && this.health <= 0,
+    }
+  }
+},
+```
+
+`this.tim` simply refers to our `tim` prop. You can see that we're returning different classes 
+based on our health. We put this code in our component's `computed` property, which 
+holds fields that require more complicated logic than our simple `data` fields. 
+
+We have one more thing to do. In `index.html` replace `#main-app` with the below: 
+
+```html
+<div id="main-app">
+    <div class="links">
+        <router-link to="/">Our OG Punching Bag!</router-link>
+        <router-link to="/tim">Tim's Punching Bag</router-link>
+    </div>
+    <router-view></router-view>
+</div>
+```
+
+We now have two links that go to different pages, i.e. the `router-link`s. The 
+`<router-view></router-view>` line tells Vue where to insert our actual component.
+
+And that's it!
+
+## What to Submit/Extra Credit
+
+Please commit and submit the link to your forked repo.
+
+For extra credit:
+  * Add an entirely new component (not reusing one like we did) and add a route for it
+  * Modify our punching bag so that, when it bursts, it has a random image on top of it 
+  (i.e. randomly selected from a set of images). Hint: This will need to be in 
+  the `computed` section!
 
 ## Summary / What you Learned
 
-* [ ] can be checkboxes
+* [X] Set up a Vue component
+
+* [X] Learn how to add event handlers and class/style bindings 
+
+* [X] Set up a Vue router
+
+* [X] Learn how to pass props to components
 
 ## Resources
 
-This workshop was based on a tutorial at https://www.youtube.com/watch?v=WjfpQlVem-8.
+This workshop was adapted from a tutorial at https://www.youtube.com/watch?v=WjfpQlVem-8.
 The repo with their provided code is located at https://github.com/iamshaunjp/vuejs-playlist/tree/65348d6c9202c7f573ca62305ca8c8cf19f15d58.
+
+Further resources used:
+  * https://vuejs.org/v2/guide/
+  * https://router.vuejs.org/en/
