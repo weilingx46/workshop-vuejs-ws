@@ -109,7 +109,7 @@ const punchingBag = Vue.component('punching-bag', {
 
 We now have a `template` property for our component that has the HTML layout it 
 will need. Notice how there's a `v-on:click` on the buttons? That indicates to Vue 
-that when a click event is emitted from the buttons execute the `punch()` and `restart()` 
+that when a click event is emitted from the buttons execute the `punch()` and `reset()` 
 methods within your component. `v-show` tells Vue to only show the Punch button 
 if ended is false.
 
@@ -155,7 +155,7 @@ template: `
 
     <div id="controls">
         <button v-on:click="punch" v-show="!ended">Punch</button>
-        <button v-on:click="restart">Restart</button>
+        <button v-on:click="reset">Reset</button>
     </div>
   </div>
 `,
@@ -182,7 +182,7 @@ const punchingBag = Vue.component('punching-bag', {
         this.ended = true;
       }
     },
-    restart() {
+    reset() {
       this.health = 100;
       this.ended = false;
     },
@@ -197,7 +197,7 @@ const punchingBag = Vue.component('punching-bag', {
 
       <div id="controls">
           <button v-on:click="punch" v-show="!ended">Punch</button>
-          <button v-on:click="restart">Restart</button>
+          <button v-on:click="reset">Reset</button>
       </div>
     </div>
   `,
@@ -205,7 +205,7 @@ const punchingBag = Vue.component('punching-bag', {
 ```
 
 Now we just need to add our punching bag component to our root instance. Go to `index.html` 
-and inside the `<div id=main-app>`, add this:
+and inside `#main-app`, add this:
 
 ```html
 <punching-bag></punching-bag>
@@ -236,6 +236,16 @@ const routes = [
 const router = new VueRouter({
   routes, // short for `routes: routes`
   mode: 'history', // removes the hash from our routes
+});
+```
+
+And now update our root instance at the very bottom of our file to use this router: 
+
+```javascript
+new Vue({
+  // This is our root instance. 
+  el: '#main-app',
+  router
 });
 ```
 
