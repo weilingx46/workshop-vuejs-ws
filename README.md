@@ -89,11 +89,28 @@ punch() {
 We can set on click methods on our controls to call these functions.
 Add `v-on:click="punch"` to the Punch button in game controls in your ``index.html`` file. Connect the restart function similarly.
 
+We also only want to show the Punch button while the game is in play, and we can do this with the `v-show` property, by binding it to the boolean `ended`. Add `v-show="!ended"` to the Punch button as well. Your Punch button should now look like:
+![](img/punchButtonScreenshot.png)
+
+If you want to test what you've made so far, go ahead and run `python -m SimpleHTTPServer 9000` as usual.
+
+Now we can show a health bar and decrease it as we punch the bag. Add `<div v-bind:style="{ width: health + '%' }"></div>` inside the div with id="bag=health". How does this work? We've just bound `health` from inside data to the width property, converted to a string by concatenation with '%'.
+
+We can bind not only data but classes to our elements. Change your bag image div to: `<div id="bag" v-bind:class="{ burst: ended }"></div>`. We are applying the burst class, which has a different punching bag image, when the boolean `ended` is true. (Remember that SimpleHTTPServer doesn't support hot reloading if you can't see these changes.)
+
+And we're done!
 
 
 ## Summary / What you Learned
 
-* [ ] can be checkboxes
+* [x] how to create a Vue app with methods and state
+* [x] use booleans to hide/show elements
+* [x] bind data or classes to elements
+* [x] set on click listeners
+
+## Extra Credit
+
+* [ ] 
 
 ## Resources
 
