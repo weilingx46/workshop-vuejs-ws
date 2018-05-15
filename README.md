@@ -104,7 +104,7 @@ And we're done!
 
 ## Extra Credit
 
-* [ ] ideas
+* [ ] make a second Vue instance (store each in a variable and pointing them to different elements)
 
 ## Resources
 
