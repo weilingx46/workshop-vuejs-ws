@@ -29,12 +29,6 @@ $ npm install vue
 
 ## Step by Step
 
-* Explanations of the what **and** the why behind each step. Try to include:
-  * higher level concepts
-  * best practices
-
-Remember to explain any notation you are using.
-
 To get started, add the following HTML inside the body tags of `index.html`.
 This provides a place for your Vue component to be mounted and provides some controls, to which we will bind functionality.
 
@@ -110,7 +104,7 @@ And we're done!
 
 ## Extra Credit
 
-* [ ] 
+* [ ] ideas
 
 ## Resources
 
