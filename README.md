@@ -27,6 +27,8 @@ punching bag as well!
 
 ## Setup
 
+First fork this repo so that you have your own personal copy.
+
 If we were building a large-scale app, we would install Vue.js via `npm`. 
 But for our purposes, we can just include the CDN link in our HTML! Add the below lines at 
 the bottom of your body tags in `index.html`:
@@ -58,7 +60,7 @@ new Vue({
 ```
 
 A lot going on here, but let's dive in. The root instance of the Vue application 
-is the code at the bottom (`new Vue(...)`). It mounts to the div where 
+is the code at the bottom (`new Vue(...)`). It mounts to the div in our `index.html` where 
 
 ```html
 <div id="main-app">
@@ -66,15 +68,15 @@ is the code at the bottom (`new Vue(...)`). It mounts to the div where
 </div>
 ```
 
-as indicated by its `el` property. Above that, we're creating a `punching-bag` 
+as is indicated by its `el` property. Above that, we're creating a `punching-bag` 
 component, which has its own specific data fields such as `message`. Already, 
-you can see some similarities with React!
+you can see some similarities with React's state!
 
 In actuality, a punching bag doesn't need a `message` field. So let's replace `data `
 with the following:
 
 ```javascript
-data: () => { 
+data: function () { 
   return {
     health: 100,
     ended: false,
@@ -134,10 +136,10 @@ methods: {
 // .....your template code, etc
 ```
 
-So we're updating our punching bag to reduce its health by 10 everytime it's 
-punched, and when its health is below zero, set `ended` to true. Recall that in 
-our template HTML, we don't show the Punch button if `ended` is true, so we are 
-directly affecting our DOM.
+So in `punch()`, we're updating our punching bag to reduce its health by 10 everytime it's 
+punched, and when its health is below zero, set `ended` to true. In `reset()`, we 
+set both `health` and `ended` back to their initial values. Recall that in our template HTML, 
+we don't show the Punch button if `ended` is true, so we are directly affecting our DOM.
 
 Now let's update our template. Add the following HTML to the template so it looks like 
 the below:
@@ -162,7 +164,7 @@ template: `
 `v-bind` modifies the attributes of the div. In `#bag-health`, it updates its 
 child div's width everytime our component's `health` changes. This is our 
 progress bar! And in `#bag` it adds a class attribute `burst` to the div when 
-ended is true. We use this in our CSS file to change the image (check it out!).
+ended is true. We use this in our CSS file to change the image ([check it out!](styles.css)).
 
 Your punching bag component should now look like the following:
 
@@ -233,7 +235,7 @@ const routes = [
 
 const router = new VueRouter({
   routes, // short for `routes: routes`
-  mode: 'history', // removes the hash from
+  mode: 'history', // removes the hash from our routes
 });
 ```
 
@@ -253,7 +255,7 @@ shortly define). Now, at the top of your punching bag component, add the followi
 property:
 
 ```javascript
-props: ['tim],
+props: ['tim'],
 // ... your data, methods, template, etc
 ```
 
@@ -261,6 +263,7 @@ We now have access to the `tim` prop in our component. Now, between `methods` an
 add this code:
 
 ```javascript
+// ... your props, data, and methods
 computed: {
   timClasses: function () {
     return {
@@ -271,6 +274,7 @@ computed: {
     }
   }
 },
+// ... your template
 ```
 
 `this.tim` simply refers to our `tim` prop. You can see that we're returning different classes 
@@ -292,14 +296,15 @@ We have one more thing to do. In `index.html` replace `#main-app` with the below
 We now have two links that go to different pages, i.e. the `router-link`s. The 
 `<router-view></router-view>` line tells Vue where to insert our actual component.
 
-And that's it!
+And that's it! You've now set up your first Vue application that also has routing. 
+Not bad at all!
 
 ## What to Submit/Extra Credit
 
 Please commit and submit the link to your forked repo.
 
 For extra credit:
-  * Add an entirely new component (not reusing one like we did) and add a route for it
+  * Add an entirely new component (not reusing one like we did) and add a route for it. Pass in props of your choosing.
   * Modify our punching bag so that, when it bursts, it has a random image on top of it 
   (i.e. randomly selected from a set of images). Hint: This will need to be in 
   the `computed` section!
