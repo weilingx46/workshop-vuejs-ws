@@ -51,7 +51,7 @@ new Vue({
 });
 ```
 
-Now run the following command and open up [](`http://localhost:8000) in your browser:
+Now run the following command and open up <http://localhost:8000> in your browser:
 
 ```python
 python -m SimpleHTTPServer
@@ -65,7 +65,7 @@ by adding
 {{ message }}
 ```
 
-inside our HTMl (this is called mustache syntax). So now that we know how to add data, 
+inside our HTML (this is called mustache syntax). So now that we know how to add data, 
 let's add what we need for our punching bag. We need a property to tell us the 
 punching bag's "health" and when it's ready to burst.
 
@@ -128,53 +128,68 @@ new Vue({
 });
 ```
 
-<!-- bag image -->
-<div id="bag" v-bind:class="{ burst: ended }"></div>
+Now let's make everything actually appear in our HTML. Vue uses templates (similar to react), 
+where we can add controls to the template that connect to our code. Let's first 
+add buttons to modify the punching bag's appearance.
 
-<!-- bag health bar -->
-<div id="bag-health">
-    <div v-bind:style="{ width: health + '%' }"></div>
-</div>
+Add the below code just inside your `<div id="main-app">` container (make sure to 
+get rid of any other stuff that's still inside it, like the message stuff).
 
-<!-- game control buttons -->
+```html
 <div id="controls">
     <button v-on:click="punch" v-show="!ended">Punch</button>
     <button v-on:click="restart">Restart</button>
 </div>
+```
 
-Your index.html should look like this:
-![](img/indexHtmlScreenshot.png)
+`v-on:click` is exactly what it looks like: when a click event is emitted on the 
+punch button, our `punch()` function will get called. `v-show` tells Vue to not show 
+the Punch button when `ended` is true. Remember that we update `ended` inside 
+`punch()` when our health is less than or equal to zero!
 
+Let's now add a div that acts like a status bar to display the punching bag's health. 
+Add this ABOVE the `<div id="controls">` part:
 
-Now head over to your app.js file. You'll notice that you the line ``el='#main-app'``.
-``el`` is an element selector, and it specifies the div that our app is going to act on (the same way we used ``getElementById`` in previous labs).
+```html
+<div id="bag-health">
+    <div v-bind:style="{ width: health + '%' }"></div>
+</div>
+```
 
-In your app.js, inside the ``data`` section , paste the following code:
+See how we're updating the div's width when our `health` data field changes? Pretty sweet! 
+Now let's add the actual bag punching bag. Add this ABOVE the `<div id="bag-health">` part:
 
-~~~~
-health: 100,
-ended: false,
-~~~~
+```html
+<div id="bag" v-bind:class="{ burst: ended }"></div>
+```
 
-These variables act like states, and they can be manipulated by the functions we provide in the methods section.
-In this case, they keep track of the health of our bag and boolean indicating if the game has ended.
+This code adds in a CSS class `burst` when our `ended` data field is true. If you look 
+in our CSS file (we've already done that for you!), then you'll see that the background 
+image changes when the `burst` class is present on the div.
 
-Now let's add a few methods to make our game more interesting. Paste the following code inside methods:
+Your HTML body should now look like the following:
 
-~~~~
-punch() {
-      this.health -= 10;
-      if (this.health <= 0) {
-        this.ended = true;
-      }
-    },
-    restart() {
-      this.health = 100;
-      this.ended = false;
-    },
-~~~~
+```html
+<body>
+    <div id="main-app">
+      <div id="bag" v-bind:class="{ burst: ended }"></div>
 
-These functions will be called from button clicks as specified in the ``index.html`` file. 
+      <div id="bag-health">
+          <div v-bind:style="{ width: health + '%' }"></div>
+      </div>
+
+      <div id="controls">
+          <button v-on:click="punch" v-show="!ended">Punch</button>
+          <button v-on:click="restart">Restart</button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+```
+
+Cool! Now let's add some ROUTING
 
 ## Summary / What you Learned
 
