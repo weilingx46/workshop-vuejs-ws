@@ -332,7 +332,8 @@ For extra credit:
 ## Resources
 
 This workshop was adapted from a tutorial at https://www.youtube.com/watch?v=WjfpQlVem-8.
-The repo with their provided code is located at https://github.com/iamshaunjp/vuejs-playlist/tree/65348d6c9202c7f573ca62305ca8c8cf19f15d58.
+The repo with their provided code is located at 
+https://github.com/iamshaunjp/vuejs-playlist/tree/65348d6c9202c7f573ca62305ca8c8cf19f15d58.
 
 Further resources used:
   * https://vuejs.org/v2/guide/
