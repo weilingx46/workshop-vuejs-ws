@@ -1,27 +1,57 @@
-#bag{
+.links {
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    width: 200px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: rgb(102, 97, 97);
+    text-decoration: none;
+    color: white;
+}
+
+#bag {
     width: 200px;
     height: 500px;
     margin: 0 auto;
-    background: url(/img/bag.png) center no-repeat;
+    background: url(img/bag.png) center no-repeat;
     background-size: 80%;
 }
 
-#bag.burst{
-    background-image: url(/img/bag-burst.png);
+#bag.burst {
+    background-image: url(img/bag-burst.png);
 }
 
-#bag-health{
+#bag.tim-100 {
+    background-image: url(img/tim-100.jpg), url(img/bag.png);
+}
+
+#bag.tim-70 {
+    background-image: url(img/tim-70.png), url(img/bag.png);
+}
+
+#bag.tim-30 {
+    background-image: url(img/tim-30.png), url(img/bag.png);
+}
+
+#bag.tim-burst {
+    background-image: url(img/tim-burst.png), url(img/bag-burst.png);
+}
+
+#bag-health {
     width: 200px;
     border: 2px solid #000;
     margin: 0 auto 20px auto;
 }
 
-#bag-health div{
+#bag-health div {
     height: 20px;
     background: crimson
 }
 
-#controls{
+#controls {
     width: 120px;
     margin: 0 auto;
 }
